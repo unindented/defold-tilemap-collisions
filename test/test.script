@@ -1,0 +1,15 @@
+local deftest = require("deftest.deftest")
+local log = require("modules.log")
+
+local log_spec = require("test.log_spec")
+local utils_spec = require("test.utils_spec")
+
+function init(self)
+  log.init()
+  log.set_print(false)
+
+  deftest.add(log_spec)
+  deftest.add(utils_spec)
+
+  deftest.run({ coverage = { enabled = true } })
+end
