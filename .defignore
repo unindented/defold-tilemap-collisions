@@ -1,6 +1,8 @@
 /.vscode
+/coverage
 /.defignore
 /.gitattributes
 /.gitignore
+/.luacov
 /.stylua.toml
 /.styluaignore
