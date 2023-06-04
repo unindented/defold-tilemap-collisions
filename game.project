@@ -1,6 +1,7 @@
 [project]
 title = defold-tilemap-collisions
 dependencies#0 = https://github.com/britzl/deftest/archive/refs/tags/2.7.2.zip
+dependencies#1 = https://github.com/subsoap/defos/archive/refs/tags/v2.7.0.zip
 
 [bootstrap]
 main_collection = /main/main.collectionc
