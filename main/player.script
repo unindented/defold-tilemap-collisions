@@ -1,0 +1,73 @@
+local PLAYER_SPEED = 400
+
+local KEY_UP = hash("up")
+local KEY_DOWN = hash("down")
+local KEY_LEFT = hash("left")
+local KEY_RIGHT = hash("right")
+
+function init(self)
+  msg.post(".", "acquire_input_focus")
+
+  self.dir = vmath.vector3()
+  self.current_anim = nil
+
+  self.correction = vmath.vector3()
+end
+
+function update(self, dt)
+  -- Position
+
+  if vmath.length_sqr(self.dir) > 1 then
+    self.dir = vmath.normalize(self.dir)
+  end
+
+  local p = go.get_position()
+  go.set_position(p + self.dir * PLAYER_SPEED * dt)
+
+  -- Animation
+
+  local anim = hash("wizard_idle")
+
+  if self.dir.x > 0 or self.dir.x == 0 and self.dir.y ~= 0 then
+    anim = hash("wizard_run_right")
+  elseif self.dir.x < 0 then
+    anim = hash("wizard_run_left")
+  end
+
+  self.dir = vmath.vector3()
+
+  if anim ~= self.current_anim then
+    msg.post("#sprite", "play_animation", { id = anim })
+    self.current_anim = anim
+  end
+
+  -- Collision resolution
+
+  self.correction = vmath.vector3()
+end
+
+function on_input(self, action_id, action)
+  if action_id == KEY_UP then
+    self.dir.y = 1
+  elseif action_id == KEY_DOWN then
+    self.dir.y = -1
+  elseif action_id == KEY_LEFT then
+    self.dir.x = -1
+  elseif action_id == KEY_RIGHT then
+    self.dir.x = 1
+  end
+end
+
+function on_message(self, message_id, message, sender)
+  -- See: https://defold.com/manuals/physics-resolving-collisions/
+  if message_id == hash("contact_point_response") then
+    if message.distance > 0 then
+      local proj = vmath.project(self.correction, message.normal * message.distance)
+      if proj < 1 then
+        local comp = (message.distance - message.distance * proj) * message.normal
+        go.set_position(go.get_position() + comp)
+        self.correction = self.correction + comp
+      end
+    end
+  end
+end

@@ -1,14 +1,20 @@
+local camera = require("modules.camera")
 local log = require("modules.log")
 
+local TILE_SIZE = 16
+
 function init(self)
-  msg.post(".", "acquire_input_focus")
-  msg.post("@render:", "use_fixed_fit_projection", { near = -1, far = 1 })
+  defos.set_maximized(true)
 
   log.init()
+  camera.init()
+
+  -- TODO: find a better place to do this
+  local scale = go.get_scale("/level/level")
+  local x, y, w, h = tilemap.get_bounds("/level/level#level_1")
+  camera.set_bounds(0, 0, w * scale.x * TILE_SIZE, h * scale.y * TILE_SIZE)
 end
 
-function on_input(self, action_id, action)
-  if action_id == hash("touch") and action.pressed then
-    log.debug("Touch!")
-  end
+function update(self, dt)
+  camera.update()
 end
