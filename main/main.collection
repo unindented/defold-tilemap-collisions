@@ -31,8 +31,8 @@ instances {
   id: "player"
   prototype: "/main/player.go"
   position {
-    x: 576.0
-    y: 1920.0
+    x: 100.0
+    y: 380.0
     z: 0.5
   }
   rotation {
@@ -42,8 +42,8 @@ instances {
     w: 1.0
   }
   scale3 {
-    x: 5.0
-    y: 5.0
+    x: 1.0
+    y: 1.0
     z: 1.0
   }
 }
@@ -62,8 +62,8 @@ collection_instances {
     w: 1.0
   }
   scale3 {
-    x: 5.0
-    y: 5.0
+    x: 1.0
+    y: 1.0
     z: 1.0
   }
 }

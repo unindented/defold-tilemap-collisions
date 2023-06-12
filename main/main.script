@@ -7,7 +7,7 @@ function init(self)
   defos.set_maximized(true)
 
   log.init()
-  camera.init()
+  camera.init({ zoom = 5 })
 
   -- TODO: find a better place to do this
   local scale = go.get_scale("/level/level")

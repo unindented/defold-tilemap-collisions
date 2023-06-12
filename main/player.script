@@ -1,4 +1,4 @@
-local PLAYER_SPEED = 400
+local PLAYER_SPEED = 80
 
 local KEY_UP = hash("up")
 local KEY_DOWN = hash("down")

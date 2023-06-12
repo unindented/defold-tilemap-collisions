@@ -7,6 +7,8 @@ local camera = require("orthographic.camera")
 
 local M = {}
 
+M.zoom = 5
+
 ----------------------------------------------------------------------------------------------------
 -- Internal API
 ----------------------------------------------------------------------------------------------------
@@ -30,7 +32,9 @@ end
 ----------------------------------------------------------------------------------------------------
 
 --- Initialize camera to follow the player.
-function M.init()
+--- @param options table Table with camera options
+function M.init(options)
+  camera.set_zoom(ids.CAMERA_ID, options.zoom)
   camera.follow(ids.CAMERA_ID, ids.PLAYER_ID, {
     lerp = 0.1,
   })

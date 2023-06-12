@@ -14,8 +14,8 @@ game_binding = /input/game.input_bindingc
 use_accelerometer = 0
 
 [display]
-width = 1024
-height = 576
+width = 320
+height = 180
 high_dpi = 1
 
 [ios]
