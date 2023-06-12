@@ -48,13 +48,13 @@ end
 
 function on_input(self, action_id, action)
   if action_id == KEY_UP then
-    self.dir.y = 1
+    self.dir.y = 1 * action.value
   elseif action_id == KEY_DOWN then
-    self.dir.y = -1
+    self.dir.y = -1 * action.value
   elseif action_id == KEY_LEFT then
-    self.dir.x = -1
+    self.dir.x = -1 * action.value
   elseif action_id == KEY_RIGHT then
-    self.dir.x = 1
+    self.dir.x = 1 * action.value
   end
 end
 
