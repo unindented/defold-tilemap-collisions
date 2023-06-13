@@ -1,4 +1,4 @@
-script: "/in/onscreen.gui_script"
+script: "/main/onscreen.gui_script"
 textures {
   name: "main"
   texture: "/main/main.atlas"
@@ -162,7 +162,7 @@ nodes {
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER
-  adjust_mode: ADJUST_MODE_FIT
+  adjust_mode: ADJUST_MODE_STRETCH
   parent: "sw_anchor"
   layer: ""
   inherit_alpha: true
@@ -175,7 +175,7 @@ nodes {
   clipping_mode: CLIPPING_MODE_NONE
   clipping_visible: true
   clipping_inverted: false
-  alpha: 1.0
+  alpha: 0.0
   template_node_child: false
   size_mode: SIZE_MODE_MANUAL
   custom_type: 0
