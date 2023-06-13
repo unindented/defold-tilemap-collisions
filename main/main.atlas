@@ -1,3 +1,11 @@
+images {
+  image: "/assets/images/analog_base.png"
+  sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+}
+images {
+  image: "/assets/images/analog_stick.png"
+  sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+}
 animations {
   id: "wizard_run_right"
   images {
